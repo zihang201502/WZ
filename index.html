@@ -15,8 +15,10 @@
         </div>
         <div class="nav-links">
             <a href="#home" class="nav-link active">首页</a>
+            <a href="#intro" class="nav-link">简介</a>
             <a href="https://cumulusosxz.pages.dev" target="_blank" rel="noopener noreferrer" class="nav-link">下载</a>
             <a href="#about" class="nav-link">关于我们</a>
+            <button class="nav-login" id="navLogin" type="button"><svg class="nav-login-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span id="navLoginLabel">登录</span></button>
         </div>
     </nav>
 
@@ -34,6 +36,17 @@
             </svg>
             立即下载
         </a>
+    </section>
+
+    <!-- 简介 -->
+    <section id="intro" class="intro">
+        <h1>简介</h1>
+        <div class="intro-body">
+            <p>Cumulus OS 是一个基于Turbo warp编程器开发的轻量、干净的伪系统。</p>
+            <p>Cumulus OS非常注重您的隐私，不会收集任何个人信息，也不会在后台偷偷上传数据。</p>
+            <p>系统更新缓慢，因为主包还在上学。</p>
+            <p>遇到问题或者有想法，欢迎在下面的「关于我们」里加微信告诉我们。</p>
+        </div>
     </section>
 
     <!-- 关于我们 -->
@@ -76,18 +89,26 @@
         </div>
 
         <div class="donate-section">
-            <p class="donate-text">给高子航投一杯豆浆吧，求求你！<br><span class="donate-sub">(我可以给你源代码并让你也成为开发者)</span></p>
+            <p class="donate-text">给我们投一杯豆浆吧，求求你！<br><span class="donate-sub">(我可以给你源代码并让你也成为开发者)</span></p>
             <img src="donate.png" alt="打赏码" class="donate-qr" id="donateQr" title="点击放大">
             <p class="donate-tip">点击图片可放大查看</p>
         </div>
 
         <div class="dev-section">
             <h2 class="dev-title">成为开发者</h2>
-            <p class="dev-desc">要求你也18岁以下12岁以上，可在微信添加客服用户询问</p>
+            <p class="dev-desc">要求你具备一定的编程基础，可在微信添加客服用户询问</p>
             <div class="dev-contact">
                 <span class="wx-label">微信号</span>
                 <span class="wx-id" data-wx="zh_2015wx">zh_2015wx</span>
                 <span class="wx-copy">复制</span>
+            </div>
+        </div>
+
+        <div class="contributor-section">
+            <h2 class="contributor-title">贡献者</h2>
+            <p>B站@10000why</p>
+            <p>B站@白猫吖</p>
+            <p></p>
             </div>
         </div>
     </section>
@@ -122,6 +143,49 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- 登录 / 创建账户窗口 -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-mask" id="loginMask"></div>
+        <div class="login-box" id="loginBox" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+            <span class="login-close" id="loginClose">&times;</span>
+            <h2 class="login-title" id="loginTitle">登录</h2>
+            <p class="login-desc" id="loginDesc">登录后可以使用账户相关功能</p>
+
+            <form class="login-pane pane-login" id="loginForm" autocomplete="off">
+                <input class="login-input" type="text" id="loginUser" placeholder="用户名" autocomplete="username">
+                <input class="login-input" type="password" id="loginPass" placeholder="密码" autocomplete="current-password">
+                <p class="login-error" id="loginError"></p>
+                <button class="login-submit" type="submit">登录</button>
+            </form>
+
+            <form class="login-pane pane-register" id="registerForm" autocomplete="off">
+                <input class="login-input" type="text" id="regUser" placeholder="用户名（2-16 个字符）" autocomplete="username">
+                <input class="login-input" type="password" id="regPass" placeholder="密码（至少 6 位）" autocomplete="new-password">
+                <input class="login-input" type="password" id="regPass2" placeholder="再次输入密码" autocomplete="new-password">
+                <label class="reg-code-label" for="regCode">*管理代码</label>
+                <input class="login-input reg-code" type="text" id="regCode" placeholder="不要乱动！" autocomplete="off" maxlength="6" inputmode="numeric">
+                <p class="login-error" id="regError"></p>
+                <button class="login-submit" type="submit">创建账户</button>
+            </form>
+
+            <p class="login-switch">
+                <span id="switchTip">还没有账户？</span>
+                <button class="login-switch-btn" id="switchBtn" type="button">创建一个</button>
+            </p>
+            <p class="login-tip">账户只保存在当前浏览器<br>换设备或清除缓存后需要重新创建</p>
+        </div>
+    </div>
+
+    <!-- 账户菜单 -->
+    <div class="account-menu" id="accountMenu">
+        <div class="account-admin" id="accountAdmin" style="display: none;">
+            <p class="account-admin-title">管理员账户</p>
+            <p class="account-admin-code">本次管理代码 <span id="accountCode">------</span></p>
+        </div>
+        <a class="account-menu-item" id="sourceItem" href="https://wwbgf.lanzouu.com/ivONO4f3suja" target="_blank" rel="noopener" style="display: none;">下载源代码</a>
+        <button class="account-menu-item" id="logoutBtn" type="button">退出登录</button>
     </div>
 
     <footer>
